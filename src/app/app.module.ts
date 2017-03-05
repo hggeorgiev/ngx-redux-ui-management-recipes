@@ -6,14 +6,16 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {StoreModule} from "@ngrx/store";
-import {metaReducer} from "./common/reducers/index";
+import {metaReducer} from "./common/index";
+import {TemplateModalComponent} from "./components/template-modal.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TemplateModalComponent,
   ],
   imports: [
-    NgbModule,
+    NgbModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule,

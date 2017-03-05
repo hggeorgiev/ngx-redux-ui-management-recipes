@@ -1,0 +1,22 @@
+
+<template #content="" let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <div class="row">
+      <div class="col-sm-10">
+        Template Modal
+      </div>
+      <div class="col-sm-2">
+        <button class="close" type="button" aria-label="Close" (click)="d('Cross click'); onCloseModal.emit()"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body">
+    Modal with Redux using a template. You can put anything here
+  </div>
+  <div class="modal-footer">
+    <div class="btn-group">
+      <button class="btn btn-warning" type="button" (click)="d('Cross click'); onCloseModal.emit()">Close</button>
+    </div>
+  </div>
+</template>
+

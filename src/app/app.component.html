@@ -1,3 +1,5 @@
-<h1>
-  {{title}}
-</h1>
+<template-modal [modalState]="this.openedModalName$ | async" (onCloseModal)="handleCloseModal()"></template-modal>
+<button class="btn btn-outline-primary" (click)="handleOpenModal('templateFormModal')">Open modal with template</button>
+
+
+<template ngbModalContainer></template>
