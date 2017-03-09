@@ -1,0 +1,24 @@
+.left-sidebar,.right-sidebar {
+  transition: width 0.3s;
+  height: 100%;
+  position: fixed;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.left-sidebar{
+  background: #909090;
+}
+
+
+.right-sidebar{
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  right: 0;
+  z-index: 999 !important;
+  background:#212121;
+
+}
+
+
+
+

@@ -1,5 +1,10 @@
+<div id="fade" class="fade-in"></div>
+<left-sidebar></left-sidebar>
+<right-sidebar></right-sidebar>
+<div id="main-content">
+  <button class="btn btn-outline-primary" (click)="handleOpenModal('templateFormModal')">Open modal with template</button>
+  <button class="btn btn-primary" sidebarToggle="left">Toggle Left Sidebar</button>
+  <button class="btn btn-primary" sidebarToggle="right">Toggle Right Sidebar</button>
+</div>
 <template-modal [modalState]="this.openedModalName$ | async" (onCloseModal)="handleCloseModal()"></template-modal>
-<button class="btn btn-outline-primary" (click)="handleOpenModal('templateFormModal')">Open modal with template</button>
-
-
 <template ngbModalContainer></template>

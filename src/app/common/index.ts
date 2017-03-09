@@ -38,4 +38,9 @@ export function metaReducer(state: any, action: any) {
  */
 
 export const getLayoutState = (state: AppState) => state.layout;
+
 export const getLayoutOpenedModalName = createSelector(getLayoutState , fromLayout.getOpenedModalName);
+
+export const getLayoutLeftSidenavState = createSelector(getLayoutState, fromLayout.getLeftSidenavState);
+
+export const getLayoutRightSidenavState = createSelector(getLayoutState, fromLayout.getRightSidenavState);

@@ -1,9 +1,6 @@
 
-import {
-  Component, ChangeDetectionStrategy, Output, ViewChild, EventEmitter, Input, ElementRef} from '@angular/core';
-
+import {Component, ChangeDetectionStrategy, Output, ViewChild, EventEmitter, Input, ElementRef} from '@angular/core';
 import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
-
 
 
 @Component({
@@ -17,8 +14,7 @@ export class TemplateModalComponent {
 
   @ViewChild('content') _templateModal:ElementRef;
 
-  @Input() set modalState(_modalState:any) {
-    console.log(_modalState);
+  @Input() set modalState(_modalState:any) {;
     if(_modalState == this.modalName) {
       this.openModal()
     } else if(this.modalRef) {

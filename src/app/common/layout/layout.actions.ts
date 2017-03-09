@@ -7,8 +7,15 @@ import {type} from "../util";
 
 
 export const LayoutActionTypes =  {
+  // Modal actions
   OPEN_MODAL: type('[Layout] Open modal'),
-  CLOSE_MODAL: type('[Layout] Close modal')
+  CLOSE_MODAL: type('[Layout] Close modal'),
+  //Left sidenav actions
+  OPEN_LEFT_SIDENAV: type('[Layout] Open LeftSidenav'),
+  CLOSE_LEFT_SIDENAV: type('[Layout] Close LeftSidenav'),
+  //Right sidenav actions
+  OPEN_RIGHT_SIDENAV: type('[Layout] Open RightSidenav'),
+  CLOSE_RIGHT_SIDENAV: type('[Layout] Close RightSidenav'),
 };
 
 /*
@@ -26,6 +33,36 @@ export class CloseModalAction implements Action {
   }
 }
 
+/*
+  Sidenav  actions
+ */
 
-export type LayoutActions = CloseModalAction | OpenModalAction
+export class OpenLeftSidenavAction implements Action {
+  type = LayoutActionTypes.OPEN_LEFT_SIDENAV;
+
+  constructor() {
+  }
+}
+export class CloseLeftSidenavAction implements Action {
+  type = LayoutActionTypes.CLOSE_LEFT_SIDENAV;
+
+  constructor() {
+  }
+}
+export class OpenRightSidenavAction implements Action {
+  type = LayoutActionTypes.OPEN_RIGHT_SIDENAV;
+
+  constructor() {
+  }
+}
+
+export class CloseRightSidenavAction implements Action {
+  type = LayoutActionTypes.CLOSE_RIGHT_SIDENAV;
+
+  constructor() {
+  }
+}
+
+export type LayoutActions = CloseModalAction | OpenModalAction | CloseLeftSidenavAction |
+                            OpenLeftSidenavAction | OpenRightSidenavAction | CloseRightSidenavAction
 
