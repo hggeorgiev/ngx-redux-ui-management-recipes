@@ -12,15 +12,19 @@ import {storeLogger} from "ngrx-store-logger";
  */
 
 import * as fromLayout from "./layout/layout.reducer"
+import * as fromGames from "./games/games.reducer"
 import {compose} from "@ngrx/core";
 import {combineReducers, State} from "@ngrx/store";
+import {state} from "@angular/core";
 
 export interface AppState {
   layout: fromLayout.State;
+  games: fromGames.State
 }
 
 export const reducers = {
-  layout: fromLayout.reducer
+  layout: fromLayout.reducer,
+  games: fromGames.reducer
 };
 
 
@@ -44,3 +48,18 @@ export const getLayoutOpenedModalName = createSelector(getLayoutState , fromLayo
 export const getLayoutLeftSidenavState = createSelector(getLayoutState, fromLayout.getLeftSidenavState);
 
 export const getLayoutRightSidenavState = createSelector(getLayoutState, fromLayout.getRightSidenavState);
+
+
+/*
+Games
+ */
+
+export const getGamesState = (state: AppState) => state.games;
+
+export const getGamesEntities = createSelector(getGamesState, fromGames.getEntities);
+
+export const getGamesCount = createSelector(getGamesState, fromGames.getCount);
+
+export const getGamesPage = createSelector(getGamesState, fromGames.getPage);
+
+export const getGamesLoadingState = createSelector(getGamesState, fromGames.getLoadingState);

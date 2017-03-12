@@ -1,0 +1,16 @@
+<div class="container" *ngIf="games">
+  <table class="table table-hover">
+    <thead class="thead-inverse" >
+    <tr>
+      <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let game of games" >
+      <td>{{game?.name}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <ngb-pagination [collectionSize]="count" [(page)]="page" (pageChange)="onPageChanged.emit($event)" [maxSize]="10" [disabled]="loading"></ngb-pagination>
+</div>
+

@@ -5,6 +5,7 @@
   <button class="btn btn-outline-primary" (click)="handleOpenModal('templateFormModal')">Open modal with template</button>
   <button class="btn btn-primary" sidebarToggle="left">Toggle Left Sidebar</button>
   <button class="btn btn-primary" sidebarToggle="right">Toggle Right Sidebar</button>
+  <games-list [games]="games$ | async" [count]="gamesCount$ | async" [page]="gamesPage$ | async" [loading]="gamesLoading$ | async" (onPageChanged)="onGamesPageChanged($event)"></games-list>
 </div>
 <template-modal [modalState]="this.openedModalName$ | async" (onCloseModal)="handleCloseModal()"></template-modal>
 <template ngbModalContainer></template>

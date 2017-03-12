@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {HttpModule, JsonpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
@@ -12,6 +12,10 @@ import {SidebarWatchDirective} from "./directives/sidebar-watch.directive";
 import {LeftSidebarComponent} from "./components/left-sidebar.component";
 import {SidebarToggleDirective} from "./directives/sidebar-toggle.directive";
 import {RightSidebarComponent} from "./components/right-sidebar.component";
+import {EffectsModule} from "@ngrx/effects";
+import {GameEffects} from "./common/games/games.effects";
+import {GamesService} from "./common/games/games.service";
+import {GamesListComponent} from "./components/games-list.component";
 
 @NgModule({
   declarations: [
@@ -20,10 +24,12 @@ import {RightSidebarComponent} from "./components/right-sidebar.component";
     SidebarToggleDirective,
     TemplateModalComponent,
     RightSidebarComponent,
-    LeftSidebarComponent
+    LeftSidebarComponent,
+    GamesListComponent,
   ],
   imports: [
     NgbModule.forRoot(),
+    JsonpModule,
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -31,8 +37,12 @@ import {RightSidebarComponent} from "./components/right-sidebar.component";
       Provide the application reducer to the store.
      */
     StoreModule.provideStore(metaReducer),
+    /*
+      Run effects
+     */
+    EffectsModule.run(GameEffects)
   ],
-  providers: [],
+  providers: [GamesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
