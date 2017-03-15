@@ -10,6 +10,9 @@ export class GamesService {
   public page:number;
 
   constructor(private jsonp:Jsonp, private store: Store<fromRoot.AppState>) {
+    /*
+    Get the page from the games state
+     */
     store.select(fromRoot.getGamesPage).subscribe((page) => {
       this.page = page;
     });

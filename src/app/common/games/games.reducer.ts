@@ -22,21 +22,20 @@ const initialState: State = {
 export function reducer(state = initialState, action: games.GameActions): State {
   switch (action.type) {
 
-    /**
-     *
-     * List gamess cases
-     */
+
     case games.GameActionTypes.LOAD: {
       const page = action.payload;
 
       return Object.assign({}, state, {
         loading: true,
+        /*
+         If there is no page selected, use the page from the initial state
+         */
         page: page == null ? state.page : page
       });
     }
 
     case games.GameActionTypes.LOAD_SUCCESS: {
-      console.log(action);
       const games = action.payload['results'];
       const gamesCount = action.payload['number_of_total_results'];
 
@@ -63,7 +62,10 @@ export function reducer(state = initialState, action: games.GameActions): State 
   }
 
 }
-
+/*
+ Selectors for the state that will be later
+ used in the games-list component
+ */
 export const getEntities = (state:State) =>  state.entities;
 export const getPage = (state:State) => state.page;
 export const getCount = (state:State) => state.count;

@@ -4,12 +4,16 @@ export interface State {
   openedModalName:string;
   leftSidebarOpened:boolean;
   rightSidebarOpened:boolean;
+  windowHeight:number;
+  windowWidth:number;
 }
 
 const initialState: State = {
   openedModalName: null,
   leftSidebarOpened:true,
-  rightSidebarOpened:false
+  rightSidebarOpened:false,
+  windowHeight: window.screen.height,
+  windowWidth: window.screen.width
 };
 
 
@@ -59,6 +63,18 @@ export function reducer(state = initialState, action: layout.LayoutActions ): St
         rightSidebarOpened: true
       });
     }
+    /*
+     Window resize case
+     */
+    case layout.LayoutActionTypes.RESIZE_WINDOW: {
+      const height:number = action.payload['height'];
+      const width:number = action.payload['width'];
+      return Object.assign({}, state, {
+        windowHeight: height,
+        windowWidth: width
+      });
+    }
+
 
     default:
       return state;
@@ -68,3 +84,5 @@ export function reducer(state = initialState, action: layout.LayoutActions ): St
 export const getOpenedModalName = (state:State) =>  state.openedModalName;
 export const getLeftSidenavState = (state:State) => state.leftSidebarOpened;
 export const getRightSidenavState = (state:State) => state.rightSidebarOpened;
+export const getWindowWidth = (state:State) => state.windowWidth;
+export const getWindowHeight = (state:State) => state.windowHeight;

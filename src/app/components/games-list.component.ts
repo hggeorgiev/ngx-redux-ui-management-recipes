@@ -19,8 +19,4 @@ export class GamesListComponent  {
 
   constructor() {
   }
-
-
-
-
 }

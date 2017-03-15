@@ -16,7 +16,20 @@ export const LayoutActionTypes =  {
   //Right sidenav actions
   OPEN_RIGHT_SIDENAV: type('[Layout] Open RightSidenav'),
   CLOSE_RIGHT_SIDENAV: type('[Layout] Close RightSidenav'),
+  //Window resize action
+  RESIZE_WINDOW: type('[Layout] Resize window')
 };
+
+
+/*
+ Window actions
+ */
+export class ResizeWndowAction implements Action {
+  type = LayoutActionTypes.RESIZE_WINDOW;
+  constructor(public payload:Object) {
+  }
+}
+
 
 /*
   Modal actions
@@ -64,5 +77,5 @@ export class CloseRightSidenavAction implements Action {
 }
 
 export type LayoutActions = CloseModalAction | OpenModalAction | CloseLeftSidenavAction |
-                            OpenLeftSidenavAction | OpenRightSidenavAction | CloseRightSidenavAction
+                            OpenLeftSidenavAction | OpenRightSidenavAction | CloseRightSidenavAction | ResizeWndowAction
 

@@ -15,7 +15,13 @@ import * as games from './common/games/games.actions';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  /*
+   Add this to your AppComponent to listen for window resize events
+   */
+  host: {
+    '(window:resize)': 'onWindowResize($event)'
+  }
 })
 export class AppComponent implements  OnInit{
   public openedModalName$: Observable<any>;
@@ -46,6 +52,10 @@ export class AppComponent implements  OnInit{
 
   onGamesPageChanged(page:number) {
     this.store.dispatch(new games.LoadGamesAction(page))
+  }
+
+  onWindowResize(event){
+    this.store.dispatch(new layout.ResizeWndowAction({width:event.target.innerWidth,height:event.target.innerHeight }))
   }
 
 }
