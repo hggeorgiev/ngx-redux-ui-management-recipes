@@ -8,12 +8,11 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
+        <h1>Alerts</h1>
         <alerts-list [alerts]="alerts$ | async "  (closeAlert)="onCloseAlert($event)"></alerts-list>
         <button class="btn btn-danger" (click)="addAlert({type: 'danger', message: 'This is a danger alert'})">Add a danger alert</button>
         <button class="btn btn-success" (click)="addAlert({type: 'success', message: 'This is a success alert'})">Add a success alert</button>
       </div>
-
-
 
     </div>
     <div class="row">
