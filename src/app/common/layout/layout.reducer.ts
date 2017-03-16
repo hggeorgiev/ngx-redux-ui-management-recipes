@@ -6,6 +6,7 @@ export interface State {
   rightSidebarOpened:boolean;
   windowHeight:number;
   windowWidth:number;
+  alerts:Array<Object>;
 }
 
 const initialState: State = {
@@ -13,7 +14,11 @@ const initialState: State = {
   leftSidebarOpened:true,
   rightSidebarOpened:false,
   windowHeight: window.screen.height,
-  windowWidth: window.screen.width
+  windowWidth: window.screen.width,
+  /*
+   In a real world case, adding a model for an alert is recommended.
+   */
+  alerts:[],
 };
 
 
@@ -21,8 +26,30 @@ const initialState: State = {
   The reducer of the layout state. Each time an action for the layout is dispatched,
   it will create a new state for the layout.
  */
+
+
 export function reducer(state = initialState, action: layout.LayoutActions ): State {
+
+  /*
+   Alert cases
+   */
+
   switch (action.type) {
+    case layout.LayoutActionTypes.ADD_ALERT: {
+      return Object.assign({}, state, {
+        alerts:[...state.alerts, action.payload]
+      });
+    }
+
+    case layout.LayoutActionTypes.REMOVE_ALERT: {
+      return Object.assign({}, state, {
+        alerts: state.alerts.filter(alert =>
+          alert['message'] !== action.payload['message']
+        )
+      });
+    }
+
+
     /*
       Modal cases
      */
@@ -69,11 +96,15 @@ export function reducer(state = initialState, action: layout.LayoutActions ): St
     case layout.LayoutActionTypes.RESIZE_WINDOW: {
       const height:number = action.payload['height'];
       const width:number = action.payload['width'];
-      return Object.assign({}, state, {
-        windowHeight: height,
-        windowWidth: width
-      });
-    }
+      const leftSidebarState = width < 768 ? false : state.leftSidebarOpened;
+
+        return Object.assign({}, state, {
+          windowHeight: height,
+          windowWidth: width,
+          leftSidebarOpened: leftSidebarState
+        });
+      }
+
 
 
     default:
@@ -86,3 +117,5 @@ export const getLeftSidenavState = (state:State) => state.leftSidebarOpened;
 export const getRightSidenavState = (state:State) => state.rightSidebarOpened;
 export const getWindowWidth = (state:State) => state.windowWidth;
 export const getWindowHeight = (state:State) => state.windowHeight;
+export const getAlerts = (state:State) => state.alerts;
+

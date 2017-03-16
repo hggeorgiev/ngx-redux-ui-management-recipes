@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 /**
@@ -11,6 +11,7 @@ import * as fromRoot from './common/index';
 import * as layout from './common/layout/layout.actions';
 
 import * as games from './common/games/games.actions';
+
 
 @Component({
   selector: 'app-root',
@@ -29,6 +30,10 @@ export class AppComponent implements  OnInit{
   public gamesCount$:Observable<number>;
   public gamesPage$:Observable<number>;
   public gamesLoading$:Observable<boolean>;
+  public alerts$:Observable<any>;
+
+
+
 
   constructor(private store: Store<fromRoot.AppState>) {
     this.openedModalName$ = store.select(fromRoot.getLayoutOpenedModalName);
@@ -36,6 +41,7 @@ export class AppComponent implements  OnInit{
     this.gamesCount$ = store.select(fromRoot.getGamesCount);
     this.gamesPage$ = store.select(fromRoot.getGamesPage);
     this.gamesLoading$ = store.select(fromRoot.getGamesLoadingState);
+    this.alerts$ = store.select(fromRoot.getLayoutAlertsState);
   }
 
   ngOnInit() {
@@ -57,5 +63,14 @@ export class AppComponent implements  OnInit{
   onWindowResize(event){
     this.store.dispatch(new layout.ResizeWndowAction({width:event.target.innerWidth,height:event.target.innerHeight }))
   }
+
+  addAlert(alert) {
+    this.store.dispatch(new layout.AddAlertAction(alert))
+  }
+
+  onCloseAlert(alert:Object) {
+   this.store.dispatch(new layout.RemoveAlertAction(alert))
+  }
+
 
 }

@@ -49,6 +49,9 @@ export const getLayoutLeftSidenavState = createSelector(getLayoutState, fromLayo
 
 export const getLayoutRightSidenavState = createSelector(getLayoutState, fromLayout.getRightSidenavState);
 
+export const getLayoutAlertsState = createSelector(getLayoutState, fromLayout.getAlerts);
+
+
 
 /*
 Games

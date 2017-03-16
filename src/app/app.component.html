@@ -1,11 +1,41 @@
 <div id="fade" class="fade-in"></div>
 <left-sidebar></left-sidebar>
 <right-sidebar></right-sidebar>
+
+
+
 <div id="main-content">
-  <button class="btn btn-outline-primary" (click)="handleOpenModal('templateFormModal')">Open modal with template</button>
-  <button class="btn btn-primary" sidebarToggle="left">Toggle Left Sidebar</button>
-  <button class="btn btn-primary" sidebarToggle="right">Toggle Right Sidebar</button>
-  <games-list [games]="games$ | async" [count]="gamesCount$ | async" [page]="gamesPage$ | async" [loading]="gamesLoading$ | async" (onPageChanged)="onGamesPageChanged($event)"></games-list>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <alerts-list [alerts]="alerts$ | async "  (closeAlert)="onCloseAlert($event)"></alerts-list>
+        <button class="btn btn-danger" (click)="addAlert({type: 'danger', message: 'This is a danger alert'})">Add a danger alert</button>
+        <button class="btn btn-success" (click)="addAlert({type: 'success', message: 'This is a success alert'})">Add a success alert</button>
+      </div>
+
+
+
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Sidebar controls</h1>
+        <button class="btn btn-primary" sidebarToggle="left">Toggle Left Sidebar</button>
+        <button class="btn btn-primary" sidebarToggle="right">Toggle Right Sidebar</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Modal</h1>
+        <button class="btn btn-outline-primary" (click)="handleOpenModal('templateFormModal')">Open modal with template</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Pagination</h1>
+        <games-list [games]="games$ | async" [count]="gamesCount$ | async" [page]="gamesPage$ | async" [loading]="gamesLoading$ | async" (onPageChanged)="onGamesPageChanged($event)"></games-list>
+      </div>
+    </div>
+  </div>
 </div>
 <template-modal [modalState]="this.openedModalName$ | async" (onCloseModal)="handleCloseModal()"></template-modal>
 <template ngbModalContainer></template>

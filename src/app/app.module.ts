@@ -16,6 +16,8 @@ import {EffectsModule} from "@ngrx/effects";
 import {GameEffects} from "./common/games/games.effects";
 import {GamesService} from "./common/games/games.service";
 import {GamesListComponent} from "./components/games-list.component";
+import {AlertsListComponent} from "./components/alerts-list.component";
+
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import {GamesListComponent} from "./components/games-list.component";
     RightSidebarComponent,
     LeftSidebarComponent,
     GamesListComponent,
+    AlertsListComponent,
   ],
   imports: [
     NgbModule.forRoot(),

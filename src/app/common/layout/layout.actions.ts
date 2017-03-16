@@ -7,6 +7,9 @@ import {type} from "../util";
 
 
 export const LayoutActionTypes =  {
+  //Alerts
+  ADD_ALERT: type('[Layout] add alert'),
+  REMOVE_ALERT: type('[Layout] remove alert'),
   // Modal actions
   OPEN_MODAL: type('[Layout] Open modal'),
   CLOSE_MODAL: type('[Layout] Close modal'),
@@ -17,19 +20,33 @@ export const LayoutActionTypes =  {
   OPEN_RIGHT_SIDENAV: type('[Layout] Open RightSidenav'),
   CLOSE_RIGHT_SIDENAV: type('[Layout] Close RightSidenav'),
   //Window resize action
-  RESIZE_WINDOW: type('[Layout] Resize window')
+  RESIZE_WINDOW: type('[Layout] Resize window'),
+
 };
 
+/*
+ Alert actions
+ */
+export class AddAlertAction implements Action {
+  type = LayoutActionTypes.ADD_ALERT;
+  constructor(public payload:Object) {
+  }
+}
 
+export class RemoveAlertAction implements Action {
+  type = LayoutActionTypes.REMOVE_ALERT;
+  constructor(public payload:Object) {
+  }
+}
 /*
  Window actions
  */
+
 export class ResizeWndowAction implements Action {
   type = LayoutActionTypes.RESIZE_WINDOW;
   constructor(public payload:Object) {
   }
 }
-
 
 /*
   Modal actions
@@ -77,5 +94,5 @@ export class CloseRightSidenavAction implements Action {
 }
 
 export type LayoutActions = CloseModalAction | OpenModalAction | CloseLeftSidenavAction |
-                            OpenLeftSidenavAction | OpenRightSidenavAction | CloseRightSidenavAction | ResizeWndowAction
+                            OpenLeftSidenavAction | OpenRightSidenavAction | CloseRightSidenavAction | ResizeWndowAction | AddAlertAction | RemoveAlertAction
 

@@ -1,5 +1,6 @@
 import {type} from "../util";
 import {Action} from "@ngrx/store";
+import {SelectTabAction} from "../layout/layout.actions";
 export const GameActionTypes =  {
   /*
    Because the games collection is asynchronous, there need to be actions to handle
