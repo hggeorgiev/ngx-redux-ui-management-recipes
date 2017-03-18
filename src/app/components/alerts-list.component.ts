@@ -1,9 +1,5 @@
-/**
- * Created by svet on 1/20/2017.
- */
+
 import {Component, Input, EventEmitter, Output} from '@angular/core';
-
-
 
 @Component({
   selector: 'alerts-list',
@@ -13,7 +9,6 @@ import {Component, Input, EventEmitter, Output} from '@angular/core';
 export class AlertsListComponent  {
   @Input() alerts:any;
   @Output() closeAlert = new EventEmitter();
-
 
   constructor() {
   }

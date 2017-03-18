@@ -37,7 +37,6 @@ export class SidebarWatchDirective implements OnInit{
        can go completely vanilla by using selectors such as windiw.getElementById(). .
        */
       if (this.el.nativeElement.className == 'right-sidebar') {
-        console.log('test')
         if (state) {
           $('#fade').addClass('fade-in');
           $("#rightBar-body").css("opacity", "1");
