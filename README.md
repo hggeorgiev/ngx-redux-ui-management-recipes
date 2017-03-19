@@ -1,5 +1,5 @@
 
-# Recipes for managing application layout using Angular 2 with Redux
+# Recipes for managing application UI layout using Angular 2 with Redux
 Become the master of your application's UI state. This repo contains samples of how you can control the UI of your Angular 2 application through Redux. 
 
 ## Development server
