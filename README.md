@@ -2,6 +2,8 @@
 # Recipes for managing application UI layout using Angular 2 with Redux
 Become the master of your application's UI state. This repo contains samples of how you can control the UI of your Angular 2 application through Redux. 
 
+### [Read the guide here](https://www.pluralsight.com/guides/front-end-javascript/ui-state-management-with-redux-in-angular-4) to get started
+
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 ## Build
