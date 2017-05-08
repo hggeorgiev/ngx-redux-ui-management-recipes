@@ -1,6 +1,6 @@
 
 # Recipes for managing application UI layout using Angular with Redux
-Become the master of your application's UI state. This repo contains samples of how you can control the UI of your Angular 2 application through Redux. 
+Become the master of your application's UI state. This repo contains samples of how you can control the UI of your Angular  application through Redux. 
 
 ### [Read the guide here](https://www.pluralsight.com/guides/front-end-javascript/ui-state-management-with-redux-in-angular-4) to get started
 
