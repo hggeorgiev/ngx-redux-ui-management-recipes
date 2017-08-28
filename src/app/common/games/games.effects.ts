@@ -20,7 +20,7 @@ export class GameEffects {
 
 
 
-  @Effect() loadGames$ = this._actions.ofType(games.GameActionTypes.LOAD)
+  @Effect() loadGames$ = this._actions.ofType(games.LOAD)
     .switchMap(() => this._service.query()
       .map((games) => {
     return new LoadGamesSuccessAction(games)

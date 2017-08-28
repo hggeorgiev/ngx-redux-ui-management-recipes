@@ -1,4 +1,3 @@
-import { createSelector } from 'reselect';
 import * as games from './games.actions';
 
 
@@ -11,7 +10,7 @@ export interface State {
   page: number;
 };
 
-const initialState: State = {
+const initialState:State = {
   loaded: false,
   loading: false,
   entities: [],
@@ -23,7 +22,7 @@ export function reducer(state = initialState, action: games.GameActions): State 
   switch (action.type) {
 
 
-    case games.GameActionTypes.LOAD: {
+    case games.LOAD: {
       const page = action.payload;
 
       return Object.assign({}, state, {
@@ -35,7 +34,7 @@ export function reducer(state = initialState, action: games.GameActions): State 
       });
     }
 
-    case games.GameActionTypes.LOAD_SUCCESS: {
+    case games.LOAD_SUCCESS: {
       const games = action.payload['results'];
       const gamesCount = action.payload['number_of_total_results'];
 
@@ -47,7 +46,7 @@ export function reducer(state = initialState, action: games.GameActions): State 
       });
     }
 
-    case games.GameActionTypes.LOAD_FAILURE: {
+    case games.LOAD_FAILURE: {
       return Object.assign({}, state ,{
         loaded: true,
         loading: false,

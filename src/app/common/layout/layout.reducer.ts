@@ -35,13 +35,13 @@ export function reducer(state = initialState, action: layout.LayoutActions ): St
    */
 
   switch (action.type) {
-    case layout.LayoutActionTypes.ADD_ALERT: {
+    case layout.ADD_ALERT: {
       return Object.assign({}, state, {
         alerts:[...state.alerts, action.payload]
       });
     }
 
-    case layout.LayoutActionTypes.REMOVE_ALERT: {
+    case layout.REMOVE_ALERT: {
       return Object.assign({}, state, {
         alerts: state.alerts.filter(alert =>
           alert['message'] !== action.payload['message']
@@ -53,7 +53,7 @@ export function reducer(state = initialState, action: layout.LayoutActions ): St
     /*
       Modal cases
      */
-    case layout.LayoutActionTypes.OPEN_MODAL: {
+    case layout.OPEN_MODAL: {
 
       const name = action.payload;
       return Object.assign({}, state, {
@@ -61,7 +61,7 @@ export function reducer(state = initialState, action: layout.LayoutActions ): St
       });
     }
 
-    case layout.LayoutActionTypes.CLOSE_MODAL: {
+    case layout.CLOSE_MODAL: {
       return Object.assign({}, state, {
         openedModalName:null
       });
@@ -70,22 +70,22 @@ export function reducer(state = initialState, action: layout.LayoutActions ): St
     /*
      Sidenav cases
      */
-    case layout.LayoutActionTypes.CLOSE_LEFT_SIDENAV: {
+    case layout.CLOSE_LEFT_SIDENAV: {
       return Object.assign({}, state, {
         leftSidebarOpened: false
       });
     }
-    case layout.LayoutActionTypes.OPEN_LEFT_SIDENAV: {
+    case layout.OPEN_LEFT_SIDENAV: {
       return Object.assign({}, state, {
         leftSidebarOpened: true
       });
     }
-    case layout.LayoutActionTypes.CLOSE_RIGHT_SIDENAV: {
+    case layout.CLOSE_RIGHT_SIDENAV: {
       return Object.assign({}, state, {
         rightSidebarOpened: false
       });
     }
-    case layout.LayoutActionTypes.OPEN_RIGHT_SIDENAV: {
+    case layout.OPEN_RIGHT_SIDENAV: {
       return Object.assign({}, state, {
         rightSidebarOpened: true
       });
@@ -93,7 +93,7 @@ export function reducer(state = initialState, action: layout.LayoutActions ): St
     /*
      Window resize case
      */
-    case layout.LayoutActionTypes.RESIZE_WINDOW: {
+    case layout.RESIZE_WINDOW: {
       const height:number = action.payload['height'];
       const width:number = action.payload['width'];
       const leftSidebarState = width < 768 ? false : state.leftSidebarOpened;
